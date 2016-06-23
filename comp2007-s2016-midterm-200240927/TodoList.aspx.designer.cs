@@ -7,11 +7,27 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace comp2007_s2016_midterm_200240927
-{
-
-
-    public partial class TodoList
-    {
+namespace comp2007_s2016_midterm_200240927 {
+    
+    
+    public partial class TodoList {
+        
+        /// <summary>
+        /// TodoGridView control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView TodoGridView;
+        
+        /// <summary>
+        /// TodoID control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.BoundField TodoID;
     }
 }
