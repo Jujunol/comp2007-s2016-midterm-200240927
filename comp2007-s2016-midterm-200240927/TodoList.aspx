@@ -9,7 +9,7 @@
             CssClass="table table-bordered table-hover table-striped"
             OnRowDataBound="TodoGridView_RowDataBound">
             <Columns>
-                <asp:BoundField ID="TodoID" DataField="TodoID" HeaderText="ID" />
+                <asp:BoundField DataField="TodoID" HeaderText="ID" />
                 <asp:BoundField DataField="TodoName" HeaderText="Name" />
                 <asp:BoundField DataField="TodoNotes" HeaderText="Notes" />
 
@@ -18,6 +18,13 @@
                         <asp:CheckBox runat="server" ID="Completed" />
                     </ItemTemplate>
                 </asp:TemplateField>
+
+                <asp:HyperLinkField HeaderText="Edit" Text="<i class='fa fa-pencil-square-o fa-lg'></i> Edit" NavigateUrl="TodoDetails.aspx"
+                    DataNavigateUrlFields="TodoID" DataNavigateUrlFormatString="TodoDetails.aspx?todoID={0}"
+                    ControlStyle-CssClass="btn btn-success btn-sm" />
+                <asp:CommandField HeaderText="Delete" DeleteText="<i class='fa fa-trash-o fa-lg'></i> Delete" 
+                    ShowDeleteButton="true" ButtonType="Link" ControlStyle-CssClass="btn btn-danger btn-sm" />
+
             </Columns>
         </asp:GridView>
     </div>
