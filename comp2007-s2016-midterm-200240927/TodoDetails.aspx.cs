@@ -7,10 +7,19 @@ using System.Web.UI.WebControls;
 
 using comp2007_s2016_midterm_200240927.Models;
 
+/**
+ * Name: John Horne
+ * StudentID: 200240927
+ * Date: 6/23/16
+ */
 namespace comp2007_s2016_midterm_200240927
 {
     public partial class TodoDetails : System.Web.UI.Page
     {
+
+        /**
+         * Runs upon page load and fetches the todo if editing
+         */
         protected void Page_Load(object sender, EventArgs e)
         {
             if(!IsPostBack && Request.QueryString.Count != 0)
@@ -19,6 +28,9 @@ namespace comp2007_s2016_midterm_200240927
             }
         }
 
+        /**
+         * Retrives the todo targeted for editing
+         */
         private void FetchTodo()
         {
             int todoID = Convert.ToInt32(Request.QueryString["TodoID"]);
@@ -37,6 +49,9 @@ namespace comp2007_s2016_midterm_200240927
             }
         }
 
+        /**
+         * Saves the todo to the database
+         */
         protected void SubmitBtn_Click(object sender, EventArgs e)
         {
             using (TodoConnection db = new TodoConnection())
@@ -71,6 +86,9 @@ namespace comp2007_s2016_midterm_200240927
             }
         }
 
+        /**
+         * Discards any edits and redirects
+         */
         protected void ResetBtn_Click(object sender, EventArgs e)
         {
             Response.Redirect("TodoList.aspx");

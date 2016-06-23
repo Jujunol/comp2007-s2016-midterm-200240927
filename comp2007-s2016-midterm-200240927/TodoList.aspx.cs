@@ -7,11 +7,20 @@ using System.Web.UI.WebControls;
 
 using comp2007_s2016_midterm_200240927.Models;
 
+
+/**
+ * Name: John Horne
+ * StudentID: 200240927
+ * Date: 6/23/16
+ */
 namespace comp2007_s2016_midterm_200240927
 {
     public partial class TodoList : System.Web.UI.Page
     {
 
+        /**
+         * Runs upon page load and fetches the todo if editing
+         */
         protected void Page_Load(object sender, EventArgs e)
         {
             if(!IsPostBack)
@@ -20,6 +29,9 @@ namespace comp2007_s2016_midterm_200240927
             }
         }
 
+        /**
+        * Retrives the todo list from database
+        */
         private void FetchTodoList()
         {
             using(TodoConnection db = new TodoConnection())
@@ -32,6 +44,9 @@ namespace comp2007_s2016_midterm_200240927
             }
         }
 
+        /**
+         * Used to populate the checkboxs' values
+         */
         protected void TodoGridView_RowDataBound(object sender, GridViewRowEventArgs e)
         {
             //if (e.Row.RowType == DataControlRowType.DataRow)
@@ -58,6 +73,9 @@ namespace comp2007_s2016_midterm_200240927
             }
         }
 
+        /**
+         * Deletes the targeted row
+         */
         protected void TodoGridView_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
             int todoID = Convert.ToInt32(TodoGridView.DataKeys[e.RowIndex].Values[0]);
@@ -79,6 +97,9 @@ namespace comp2007_s2016_midterm_200240927
             this.FetchTodoList();
         }
 
+        /**
+         * Update the database on change
+         */
         protected void Completed_CheckedChanged(object sender, EventArgs e)
         {
             //CheckBox checkbox = (CheckBox)sender;
