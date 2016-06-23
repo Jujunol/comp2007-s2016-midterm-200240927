@@ -13,7 +13,7 @@
 
              <div class="form-group">
                  <label for="Notes" class="control-label">Notes:</label>
-                 <asp:TextBox runat="server" ID="Notes" placeholder="Additional Notes" CssClass="form-control" required="true" />
+                 <asp:TextBox runat="server" ID="Notes" placeholder="Additional Notes" CssClass="form-control" />
              </div>
 
              <div class="form-group">

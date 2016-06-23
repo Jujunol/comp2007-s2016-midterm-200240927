@@ -81,9 +81,10 @@ namespace comp2007_s2016_midterm_200240927
 
         protected void Completed_CheckedChanged(object sender, EventArgs e)
         {
+            //CheckBox checkbox = (CheckBox)sender;
             //using (TodoConnection db = new TodoConnection())
             //{
-            //    //int todoID = Convert.ToInt32(TodoGridView.DataKeys[e.].Values[0]);
+            //    int todoID = Convert.ToInt32(checkbox.);
             //    Todo todo = (from todoList in db.Todos
             //                 where todoID == todoList.TodoID
             //                 select todoList).FirstOrDefault();
