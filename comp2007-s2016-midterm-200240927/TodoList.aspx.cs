@@ -41,21 +41,58 @@ namespace comp2007_s2016_midterm_200240927
             //}
 
             // Couln't figure out efficient way, to populate checkbox values
-            // going with garbage code - CODE DOESN'T EVEN WORK WTF
+            // going with inefficient code
 
             if(e.Row.RowType == DataControlRowType.DataRow)
             {
                 using (TodoConnection db = new TodoConnection())
                 {
-                    int rowID = Convert.ToInt32(e.Row.FindControl("TodoID"));
+                    int todoID = Convert.ToInt32(TodoGridView.DataKeys[e.Row.RowIndex].Values[0]);
                     Todo todo = (from todoList in db.Todos
-                                 where rowID == todoList.TodoID
+                                 where todoID == todoList.TodoID
                                  select todoList).FirstOrDefault();
 
                     if(todo != null)
                         ((CheckBox)e.Row.FindControl("Completed")).Checked = (todo.Completed == true);
                 }
             }
+        }
+
+        protected void TodoGridView_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+            int todoID = Convert.ToInt32(TodoGridView.DataKeys[e.RowIndex].Values[0]);
+
+            using (TodoConnection db = new TodoConnection())
+            {
+                Todo todo = (from todoList in db.Todos
+                             where todoList.TodoID == todoID
+                             select todoList).FirstOrDefault();
+
+                if (todo != null)
+                {
+                    db.Todos.Remove(todo);
+                    db.SaveChanges();
+                }
+            }
+
+            // refresh the grid
+            this.FetchTodoList();
+        }
+
+        protected void Completed_CheckedChanged(object sender, EventArgs e)
+        {
+            //using (TodoConnection db = new TodoConnection())
+            //{
+            //    //int todoID = Convert.ToInt32(TodoGridView.DataKeys[e.].Values[0]);
+            //    Todo todo = (from todoList in db.Todos
+            //                 where todoID == todoList.TodoID
+            //                 select todoList).FirstOrDefault();
+
+            //    if (todo != null)
+            //    {
+            //        todo
+            //    }
+            //}
         }
     }
 }

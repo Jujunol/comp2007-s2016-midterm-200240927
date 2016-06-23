@@ -5,17 +5,22 @@
         <div class="page-header">
             <h1>Your Todo List</h1>
         </div>
+        <div>
+            <p><a href="TodoDetails.aspx" class="btn btn-sm btn-success"><i class="fa fa-plus"></i></a></p>
+        </div>
         <asp:GridView ID="TodoGridView" runat="server" AutoGenerateColumns="false" DataKeyNames="TodoID"
             CssClass="table table-bordered table-hover table-striped"
-            OnRowDataBound="TodoGridView_RowDataBound">
+            OnRowDataBound="TodoGridView_RowDataBound"
+            OnRowDeleting="TodoGridView_RowDeleting">
             <Columns>
                 <asp:BoundField DataField="TodoID" HeaderText="ID" />
                 <asp:BoundField DataField="TodoName" HeaderText="Name" />
                 <asp:BoundField DataField="TodoNotes" HeaderText="Notes" />
 
+                <%--<asp:CheckBoxField DataField="Completed" HeaderText="Completed" />--%>
                 <asp:TemplateField HeaderText="Completed">
                     <ItemTemplate>
-                        <asp:CheckBox runat="server" ID="Completed" />
+                        <asp:CheckBox runat="server" ID="Completed" OnCheckedChanged="Completed_CheckedChanged" />
                     </ItemTemplate>
                 </asp:TemplateField>
 
